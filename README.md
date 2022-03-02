@@ -108,4 +108,6 @@ For manually set dimensions, all matrices will have rows/columns added or subtra
 
 I am not a professional developer or programmer. If there are unforseen issues or bugs please let me know, but no promises on the reliability of this function. I've done my best to think of all possible situations but it's likely I missed something. Thanks!
 
+Also, I know matrices and arrays are technically not the same thing and I use the two pretty interchangeably in this documentation. Sorry about that. Don't be mean about it.
+
 [![View MATLAB_samesize on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/107470-matlab_samesize)
