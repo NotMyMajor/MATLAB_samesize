@@ -107,3 +107,5 @@ For manually set dimensions, all matrices will have rows/columns added or subtra
 ### Warning:
 
 I am not a professional developer or programmer. If there are unforseen issues or bugs please let me know, but no promises on the reliability of this function. I've done my best to think of all possible situations but it's likely I missed something. Thanks!
+
+[![View MATLAB_samesize on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/107470-matlab_samesize)
