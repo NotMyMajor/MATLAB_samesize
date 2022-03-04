@@ -18,7 +18,8 @@
 % Name-Value Pair Arguments:
 % RowCol: Manually sets the desired size of the output matrices. Must be submitted as a 1x2 non-zero integer vector indicating [rowsize, columnsize].
 % SmallBig: Sets whether to truncate larger matrices to the size of the smallest dimesions of any matrix, or extend smaller matrices to the size of the largest. Must be either "small" or "big". Defaults to "big". If the rows and columns have been manually set, this input is ignored.
-% Filler: Sets whether to fill extra rows and columns with NaN, zero, or an empty string (only for cell arrays). Must be "NaN", "nan", "zero", "0", "String", or "string". Defaults to "NaN".
+% Filler: Sets whether to fill extra rows and columns with NaN, zero, or an empty string (only for cell arrays). Must be "NaN", "nan", "zero", "0", "String", "string", "inf", or "Inf". Defaults to "NaN".
+% CustomFiller: Send a custom filler character, string, integer, float, or double to be used to fill extra rows and columns. Input must be a (1,1) scalar of one of the previous classes. (i.e. you can't pass an array into this, just a single value, character, or word.) This argument is evaluated before (and will overwrite) the Filler argument.
 
 % Outputs:
 % varargout: Ouputs one array for each array in the input. They can be accessed in the order they were entered. You do not necessarily have to take every output that is generated.
@@ -55,6 +56,7 @@
 % selected will output 2x2 matrices with the extra column of the first
 % matrix and the extra row of the second removed.)
 
+%%
 function varargout = samesize(varargin,options)
 
 arguments (Repeating)
@@ -68,18 +70,25 @@ arguments
     
     options.RowCol (1,2) {mustBeNumeric,mustBeReal,mustBeInteger} = [0,0]
     options.SmallBig {mustBeMember(options.SmallBig,["small","big"])} = "big"
-    options.Filler {mustBeMember(options.Filler, ["NaN", "nan", "0", "zero", "string", "String"])} = "NaN"
+    options.Filler {mustBeMember(options.Filler, ["NaN", "nan", "0", "zero", "string", "String", "inf", "Inf"])} = "NaN"
+    options.CustomFiller (1,1) {mustBeA(options.CustomFiller, ["integer", "float", "double", "char", "string"])} = NaN;
     
 end
 
 nOutputs = nargout;
 
-if options.Filler == "NaN" || options.Filler == "nan"
-    filler = NaN;
-elseif options.Filler == "string" || options.Filler == "String"
-    filler = "";
+if isnan(options.CustomFiller)
+    if options.Filler == "NaN" || options.Filler == "nan"
+        filler = NaN;
+    elseif options.Filler == "string" || options.Filler == "String"
+        filler = "";
+    elseif options.Filler == "inf" || options.Filler == "Inf"
+        filler = inf;
+    else
+        filler = 0;
+    end
 else
-    filler = 0;
+    filler = options.CustomFiller;
 end
 
 if options.RowCol(1) ~= 0 && options.RowCol(2) ~= 0
