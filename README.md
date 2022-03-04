@@ -16,7 +16,7 @@ arrays and use those to set the dimensions of all arrays depending on
 whether "small" or "big" was selected in the options. Default is "big".
 
 Matrices can also be resized to certain inputted dimensions, in which case too large dimesions will be truncated and too small will be filled.
-The matrix filler defaults to NaN but can also be set to zero or an empty string.
+The matrix filler defaults to NaN but can also be set to zero or an empty string. You can now also use the CustomFiller argument to pass in any custom filler character, string, or number to the function.
 One output matrix is given for every input matrix.
 You can even mix inputs of double arrays and cell arrays and each array will be passed back in the same form it entered.
 See arguments notes below.
@@ -36,6 +36,9 @@ samesize(array1,array2,array3,array4,...)
 * SmallBig: Sets whether to truncate larger matrices to the size of the smallest dimesions of any matrix, or extend smaller matrices to the size of the largest. Must be either "small" or "big". Defaults to "big". If the rows and columns have been manually set, this input is ignored.
 
 * Filler: Sets whether to fill extra rows and columns with NaN, zero, or an empty string (only for cell arrays). Must be "NaN", "nan", "zero", "0", "String", or "string". Defaults to "NaN".
+
+* CustomFiller: Send a custom filler character, string, integer, float, or double to be used to fill extra rows and columns. Input must be a (1,1) scalar of one of the previous classes. (i.e. you can't pass an array into this, just a single value, character, or word.) This argument is evaluated before (and will overwrite) the Filler argument.
+
 
 ### Outputs:
 
