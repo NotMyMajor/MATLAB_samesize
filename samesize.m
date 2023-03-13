@@ -106,7 +106,7 @@ if options.RowCol(1) ~= 0 && options.RowCol(2) ~= 0
             for rd=1:abs(rowdiff)
                 if class(varargin{i}) == "double"
                     if class(filler) == "string"
-                        error("ERROR in sizesame. Input arrays included a double matrix, but filler was set to 'string'. Cannot populate double arrays with empty strings. Please set argument 'Filler' to either 'NaN' or 0 or change the matrix to a cell matrix.");
+                        error("ERROR in samesize(). Input arrays included a double matrix, but filler was set to 'string'. Cannot populate double arrays with empty strings. Please set argument 'Filler' to either 'NaN' or 0 or change the matrix to a cell matrix.");
                     end
                     varargin{i}((numrows+rd), :) = filler;
                 elseif class(varargin{i}) == "cell"
@@ -124,7 +124,7 @@ if options.RowCol(1) ~= 0 && options.RowCol(2) ~= 0
             for cd=1:abs(coldiff)
                 if class(varargin{i}) == "double"
                     if class(filler) == "string"
-                        error("ERROR in sizesame. Input arrays included a double matrix, but filler was set to 'string'. Cannot populate double arrays with empty strings. Please set argument 'Filler' to either 'NaN' or 0 or change the matrix to a cell matrix.");
+                        error("ERROR in samesize(). Input arrays included a double matrix, but filler was set to 'string'. Cannot populate double arrays with empty strings. Please set argument 'Filler' to either 'NaN' or 0 or change the matrix to a cell matrix.");
                     end
                     varargin{i}(:, (numcols+cd)) = filler;
                 elseif class(varargin{i}) == "cell"
@@ -136,14 +136,14 @@ if options.RowCol(1) ~= 0 && options.RowCol(2) ~= 0
 %     fprintf("Done\n");
     
 elseif options.RowCol(1) ~= 0 && options.RowCol(2) == 0
-    error("ERROR in sizesame(). At least one value in RowCol was zero. All values of RowCol must be nonzero to use manual sizing.");
+    error("ERROR in samesize(). At least one value in RowCol was zero. All values of RowCol must be nonzero to use manual sizing.");
 
 elseif options.RowCol(1) == 0 && options.RowCol(2) ~= 0
-    error("ERROR in sizesame(). At least one value in RowCol was zero. All values of RowCol must be nonzero to use manual sizing.");
+    error("ERROR in samesize(). At least one value in RowCol was zero. All values of RowCol must be nonzero to use manual sizing.");
 
 else
     if length(varargin) < 2
-        warning("WARNING in sizesame(). Only one matrix passed in, but RowCol was unset. Default behavior for this case is to pass back the original matrix unaltered. If you meant to change the size of this single matrix, set the 'RowCol' argument. If you meant to match this matrix size to another matrix (or vice versa), pass in multiple matrices.");
+        warning("WARNING in samesize(). Only one matrix passed in, but RowCol was unset. Default behavior for this case is to pass back the original matrix unaltered. If you meant to change the size of this single matrix, set the 'RowCol' argument. If you meant to match this matrix size to another matrix (or vice versa), pass in multiple matrices.");
     else
         min_row = inf;
         min_col = inf;
@@ -193,7 +193,7 @@ else
                     for rd=1:rowdiff
                         if class(varargin{i}) == "double"
                             if class(filler) == "string"
-                                error("ERROR in sizesame. Input arrays included a double matrix, but filler was set to 'string'. Cannot populate double arrays with empty strings. Please set argument 'Filler' to either 'NaN' or 0 or change the matrix to a cell matrix.");
+                                error("ERROR in samesize(). Input arrays included a double matrix, but filler was set to 'string'. Cannot populate double arrays with empty strings. Please set argument 'Filler' to either 'NaN' or 0 or change the matrix to a cell matrix.");
                             end
                             varargin{i}((numrows+rd), :) = filler;
                         elseif class(varargin{i}) == "cell"
@@ -206,7 +206,7 @@ else
                     for cd=1:coldiff
                         if class(varargin{i}) == "double"
                             if class(filler) == "string"
-                                error("ERROR in sizesame. Input arrays included a double matrix, but filler was set to 'string'. Cannot populate double arrays with empty strings. Please set argument 'Filler' to either 'NaN' or 0 or change the matrix to a cell matrix.");
+                                error("ERROR in samesize(). Input arrays included a double matrix, but filler was set to 'string'. Cannot populate double arrays with empty strings. Please set argument 'Filler' to either 'NaN' or 0 or change the matrix to a cell matrix.");
                             end
                             varargin{i}(:, (numcols+cd)) = filler;
                         elseif class(varargin{i}) == "cell"
