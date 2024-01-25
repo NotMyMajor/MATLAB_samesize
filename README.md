@@ -8,16 +8,16 @@ Takes any number of cell or double arrays and resizes them all to the same dimen
 * [Notes and Warnings](#notes-and-warnings)
 
 ## Overview
-Matrices can be truncated to match the smallest dimensions of the
-matrices, or extended with a filler value to match the largest dimensions
-of the matrices. For this behavior, the program will find the
+Arrays can be truncated to match the smallest dimensions of the
+arrays, or extended with a filler value to match the largest dimensions
+of the arrays. For this behavior, the program will find the
 minimum and maximum number of rows and columns from all the inputted
 arrays and use those to set the dimensions of all arrays depending on
 whether "small" or "big" was selected in the options. Default is "big".
 
-Matrices can also be resized to certain inputted dimensions, in which case too large dimesions will be truncated and too small will be filled.
-The matrix filler defaults to NaN but can also be set to zero or an empty string. You can now also use the CustomFiller argument to pass in any custom filler character, string, or number to the function.
-One output matrix is given for every input matrix.
+Arrays can also be resized to certain inputted dimensions, in which case too large dimesions will be truncated and too small will be filled.
+The array filler defaults to NaN but can also be set to zero or an empty string. You can now also use the CustomFiller argument to pass in any custom filler character, string, or number to the function.
+One output array is given for every input array.
 You can even mix inputs of double arrays and cell arrays and each array will be passed back in the same form it entered.
 See arguments notes below.
 
@@ -31,9 +31,9 @@ samesize(array1,array2,array3,array4,...)
 
 ### Name-Value Pair Arguments:
 
-* RowCol: Manually sets the desired size of the output matrices. Must be submitted as a 1x2 non-zero integer vector indicating [rowsize, columnsize].
+* RowCol: Manually sets the desired size of the output arrays. Must be submitted as a 1x2 non-zero integer vector indicating [rowsize, columnsize].
 
-* SmallBig: Sets whether to truncate larger matrices to the size of the smallest dimesions of any matrix, or extend smaller matrices to the size of the largest. Must be either "small" or "big". Defaults to "big". If the rows and columns have been manually set, this input is ignored.
+* SmallBig: Sets whether to truncate larger arrays to the size of the smallest dimesions of any array, or extend smaller arrays to the size of the largest. Must be either "small" or "big". Defaults to "big". If the rows and columns have been manually set, this input is ignored.
 
 * Filler: Sets whether to fill extra rows and columns with NaN, zero, or an empty string (only for cell arrays). Must be "NaN", "nan", "zero", "0", "String", or "string". Defaults to "NaN".
 
@@ -93,19 +93,19 @@ With optional argument for filler type:
 
 As mentioned above, the default response of the program is to make all
 arrays the size of the largest dimensions of the arrays given. For
-example, if you submit a 1x3 matrix and a 3x1 matrix, the result will be
-3x3 matrices with 2 rows of NaN for the first matrix and two columns of 
+example, if you submit a 1x3 array and a 3x1 array, the result will be
+3x3 arrays with 2 rows of NaN for the first array and two columns of 
 NaN for the second, as this is the largest combination of rows and 
-columns of the matrices given. Likewise, if you submit a 3x3 matrix and 
-a 1x3 matrix, the result will be 3x3 matrices with no changes to the 
-first matrix and two rows of NaN for the second.
+columns of the arrays given. Likewise, if you submit a 3x3 array and 
+a 1x3 array, the result will be 3x3 arrays with no changes to the 
+first array and two rows of NaN for the second.
 
 This same behavior applies to the "small" 
-option. (i.e. an input of a 2x3 matrix and a 3x2 matrix with "small" 
-selected will output 2x2 matrices with the extra column of the first
-matrix and the extra row of the second removed.)
+option. (i.e. an input of a 2x3 array and a 3x2 array with "small" 
+selected will output 2x2 arrays with the extra column of the first
+array and the extra row of the second removed.)
 
-For manually set dimensions, all matrices will have rows/columns added or subtracted as necessary to make them the correct size.
+For manually set dimensions, all arrays will have rows/columns added or subtracted as necessary to make them the correct size.
 
 ### Warning:
 
